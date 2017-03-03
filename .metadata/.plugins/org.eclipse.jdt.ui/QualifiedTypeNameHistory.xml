@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.UnfoldingMap"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Google"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.OpenStreetMap"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.OpenStreetMap.OpenStreetMapProvider"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Microsoft"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Microsoft.HybridProvider"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.AcetateProvider"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.AcetateProvider.Roads"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Yahoo"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Yahoo.HybridProvider"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.OpenWeatherProvider"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.OpenWeatherProvider.Temperature"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Google.GoogleSimplifiedProvider"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Google.GoogleTerrainProvider"/>
+<fullyQualifiedTypeName name="de.fhpotsdam.unfolding.providers.Google.GoogleMapProvider"/>
+</qualifiedTypeNameHistroy>
