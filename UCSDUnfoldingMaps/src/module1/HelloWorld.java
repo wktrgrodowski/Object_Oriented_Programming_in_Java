@@ -1,17 +1,19 @@
 package module1;
 
-import processing.core.PApplet;
+import java.util.ArrayList;
+import java.util.List;
+
 import de.fhpotsdam.unfolding.UnfoldingMap;
+import de.fhpotsdam.unfolding.data.Feature;
+import de.fhpotsdam.unfolding.data.PointFeature;
 import de.fhpotsdam.unfolding.geo.Location;
+import de.fhpotsdam.unfolding.marker.Marker;
+import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import de.fhpotsdam.unfolding.providers.AbstractMapProvider;
-import de.fhpotsdam.unfolding.providers.AcetateProvider;
 import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.providers.MBTilesMapProvider;
-import de.fhpotsdam.unfolding.providers.Microsoft;
-import de.fhpotsdam.unfolding.providers.OpenStreetMap;
-import de.fhpotsdam.unfolding.providers.OpenWeatherProvider;
-import de.fhpotsdam.unfolding.providers.Yahoo;
 import de.fhpotsdam.unfolding.utils.MapUtils;
+import processing.core.PApplet;
 
 /** HelloWorld
   * An application with two maps side-by-side zoomed in on different locations.
@@ -39,6 +41,13 @@ public class HelloWorld extends PApplet
 	
 	/** The map you will use to display your home town */ 
 	UnfoldingMap map2;
+	
+	private int yellow = color(255, 255, 0);
+	private int red = color(255,0,0);
+	
+	private void addKey() {
+		
+	}
 
 	public void setup() {
 		size(850, 600, P2D);  // Set up the Applet window to be 800x600
@@ -86,14 +95,55 @@ public class HelloWorld extends PApplet
 		map2 = new UnfoldingMap(this, 450, 50, 350, 500, provider);
 		map2.zoomAndPanTo(zoomLevel, new Location(50.04f, 19.95f));
 		MapUtils.createDefaultEventDispatcher(this, map2);
+		
+		Location cracow = new Location(50.061389, 19.938333);
+		Location wieliczka = new Location(49.986111, 20.061667);
+		Location skawina = new Location(49.975, 19.828333);
+		
+		Feature cracowFeat = new PointFeature(cracow);
+		Feature wieliczkaFeat = new PointFeature(wieliczka);
+		Feature skawinaFeat = new PointFeature(skawina);
+		
+		cracowFeat.addProperty("Name", "Cracow");
+		cracowFeat.addProperty("Founded", "1257");
+		cracowFeat.addProperty("Population", "762448");
+		
+		wieliczkaFeat.addProperty("Name", "Wieliczka");
+		wieliczkaFeat.addProperty("Founded", "1290");
+		wieliczkaFeat.addProperty("Population", "22278");
+		
+		skawinaFeat.addProperty("Name", "Skawina");
+		skawinaFeat.addProperty("Founded", "1364");
+		skawinaFeat.addProperty("Population", "24246");
+		
+		List<Feature> pfList = new ArrayList<Feature>();
+		pfList.add(cracowFeat);
+		pfList.add(wieliczkaFeat);
+		pfList.add(skawinaFeat);		
+		
+		List<Marker> markers = new ArrayList<Marker>();
+		for (Feature pf : pfList) {
+			Marker m = new SimplePointMarker(((PointFeature) pf).getLocation(), pf.getProperties());
+			markers.add(m);
+		}
+		
+		for (Marker m : markers){
+			if( Integer.parseInt((String) m.getProperty("Population")) > 100000){
+				m.setColor(red);
+			}
+			else {
+				m.setColor(yellow);
+			}
+		}
+		
+		map2.addMarkers(markers);
 	}
 
 	/** Draw the Applet window.  */
 	public void draw() {
-		// So far we only draw map1...
-		// TODO: Add code so that both maps are displayed
 		map1.draw();
 		map2.draw();
+		addKey();
 	}
 
 	
