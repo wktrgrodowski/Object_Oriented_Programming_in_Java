@@ -1,5 +1,7 @@
 package module4;
 
+import java.awt.Color;
+
 import de.fhpotsdam.unfolding.data.Feature;
 import de.fhpotsdam.unfolding.data.PointFeature;
 import de.fhpotsdam.unfolding.geo.Location;
@@ -42,7 +44,14 @@ public class CityMarker extends SimplePointMarker {
 		// Save previous drawing style
 		pg.pushStyle();
 		
-		// TODO: Add code to draw a triangle to represent the CityMarker
+		float x2 = x+10;
+		float y2 = y;
+		
+		float x3 = x+5;
+		float y3 = y-10;
+		
+		pg.fill(153,50,204);
+		pg.triangle(x, y, x2, y2, x3, y3);
 		
 		// Restore previous drawing style
 		pg.popStyle();

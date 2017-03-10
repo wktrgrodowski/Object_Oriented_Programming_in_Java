@@ -21,7 +21,8 @@ import de.fhpotsdam.unfolding.providers.MBTilesMapProvider;
 import de.fhpotsdam.unfolding.providers.Microsoft;
 import de.fhpotsdam.unfolding.providers.OpenStreetMap;
 import de.fhpotsdam.unfolding.utils.MapUtils;
-
+import demos.Person;
+import demos.Student;
 //Parsing library
 import parsing.ParseFeed;
 
@@ -98,6 +99,7 @@ public class EarthquakeCityMap extends PApplet {
 			Object magObj = f.getProperty("magnitude");
 			float mag = Float.parseFloat(magObj.toString());
 			// PointFeatures also have a getLocation method
+			
 		}
 
 		for (Marker m : markers) {

@@ -38,11 +38,7 @@
 {"type":"Feature","properties":{"name":"Toronto", "population":"2.62", "country" : "Canada", "coastal" : "false"},"geometry":{"type":"Point","coordinates":[-79.4000, 43.7000]}},
 {"type":"Feature","properties":{"name":"Moscow", "population":"12.20", "country" : "Russia", "coastal" : "false"},"geometry":{"type":"Point","coordinates":[37.7500, 55.7500]}},
 {"type":"Feature","properties":{"name":"Tehran", "population":"8.15", "country" : "Iran", "coastal" : "false"},"geometry":{"type":"Point","coordinates":[51.4231, 35.6961]}},
-{"type":"Feature","properties":{"name":"Cairo", "population":"10.23", "country" : "Egypt", "coastal" : "false"},"geometry":{"type":"Point","coordinates":[31.2333, 30.0500]}}
+{"type":"Feature","properties":{"name":"Cairo", "population":"10.23", "country" : "Egypt", "coastal" : "false"},"geometry":{"type":"Point","coordinates":[31.2333, 30.0500]}},
+{"type":"Feature","properties":{"name":"Kraków", "population":"0.8", "country" : "Poland", "coastal" : "false"},"geometry":{"type":"Point","coordinates":[19.9383, 50.0613]}}
 ]
 }
-
-// coastal or non-coastal
-// put more coastal cities
-// equal rep!
-// is Athens coastal?
