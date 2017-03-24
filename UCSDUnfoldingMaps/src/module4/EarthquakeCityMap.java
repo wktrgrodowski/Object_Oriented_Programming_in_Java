@@ -1,5 +1,6 @@
 package module4;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import de.fhpotsdam.unfolding.geo.Location;
 import de.fhpotsdam.unfolding.marker.AbstractShapeMarker;
 import de.fhpotsdam.unfolding.marker.Marker;
 import de.fhpotsdam.unfolding.marker.MultiMarker;
+import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import de.fhpotsdam.unfolding.providers.AbstractMapProvider;
 import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.providers.MBTilesMapProvider;
@@ -79,9 +81,9 @@ public class EarthquakeCityMap extends PApplet {
 			earthquakesURL = "2.5_week.atom"; // The same feed, but saved August
 												// 7, 2015
 		} else {
-			//AbstractMapProvider mapProvider = new Microsoft.HybridProvider();
+			// AbstractMapProvider mapProvider = new Microsoft.HybridProvider();
 			AbstractMapProvider mapProvider = new OpenStreetMap.OpenStreetMapProvider();
-			//AbstractMapProvider mapProvider = new Google.GoogleMapProvider();
+			// AbstractMapProvider mapProvider = new Google.GoogleMapProvider();
 			map = new UnfoldingMap(this, 200, 50, 650, 600, mapProvider);
 			// map = new UnfoldingMap(this, 50, 50, getSize().width-100,
 			// getSize().height-100, new Google.GoogleMapProvider());//
@@ -101,7 +103,7 @@ public class EarthquakeCityMap extends PApplet {
 		// earthquakesURL = "test2.atom";
 
 		// WHEN TAKING THIS QUIZ: Uncomment the next line
-		 earthquakesURL = "quiz1.atom";
+		// earthquakesURL = "quiz1.atom";
 
 		// (2) Reading in earthquake data and geometric properties
 		// STEP 1: load country features and markers
@@ -145,15 +147,15 @@ public class EarthquakeCityMap extends PApplet {
 		background(0);
 		map.draw();
 		addKey();
-
+		drawButtons();
 	}
 
 	// helper method to draw key in GUI
 	private void addKey() {
 		// Remember you can use Processing's graphics methods here
-		PFont mono = createFont("Comic Sans MS", 16);//loadFont("andalemo.ttf");
+		PFont mono = createFont("Comic Sans MS", 16);// loadFont("andalemo.ttf");
 		textFont(mono);
-		
+
 		fill(255, 250, 240);
 		rect(25, 50, 150, 250, 7);
 
@@ -162,18 +164,18 @@ public class EarthquakeCityMap extends PApplet {
 		textSize(12);
 		text("Earthquake Key:", 50, 75);
 
-		fill(color(153,50,204));
+		fill(color(153, 50, 204));
 		triangle(50, 100, 60, 100, 55, 90);
-		fill(color(255,255,255));
+		fill(color(255, 255, 255));
 		ellipse(55, 115, 10, 10);
 		rect(50, 130, 10, 10);
-		fill(255,255,0);
+		fill(255, 255, 0);
 		ellipse(55, 180, 10, 10);
-		fill(0,0,255);
+		fill(0, 0, 255);
 		ellipse(55, 200, 10, 10);
-		fill(255,0,0);
+		fill(255, 0, 0);
 		ellipse(55, 220, 10, 10);
-		fill(color(255,255,255));
+		fill(color(255, 255, 255));
 		ellipse(55, 240, 10, 10);
 		line(50, 235, 60, 245);
 		line(60, 235, 50, 245);
@@ -187,6 +189,29 @@ public class EarthquakeCityMap extends PApplet {
 		text("Intermediate", 75, 199);
 		text("Deep", 75, 219);
 		text("Past day", 75, 239);
+	}
+
+	private void drawButtons() {
+		fill(255, 255, 255);
+		rect(220, 60, 25, 25);
+		fill(100, 100, 100);
+		rect(220, 100, 25, 25);
+	}
+	
+	public void mousePressed() {
+		
+	}
+	
+	public void mouseClicked() {
+		
+	}
+	
+	public void mouseReleased() {
+		if (mouseX > 220 && mouseX < 245 && mouseY > 60 && mouseY < 85) {
+			background(255, 255, 255);
+		} else if (mouseX > 220 && mouseX < 245 && mouseY > 100 && mouseY < 125) {
+			background(100, 100, 100);
+		}
 	}
 
 	// Checks whether this quake occurred on land. If it did, it sets the
@@ -272,6 +297,14 @@ public class EarthquakeCityMap extends PApplet {
 			return true;
 		}
 		return false;
+	}
+
+	public void keyPressed() {
+		if (key == 'b') {
+			Marker m = new SimplePointMarker(new Location(49.432697, 11.112960));
+			map.addMarker(m);
+			// background(Color.CYAN.getRGB());
+		}
 	}
 
 }

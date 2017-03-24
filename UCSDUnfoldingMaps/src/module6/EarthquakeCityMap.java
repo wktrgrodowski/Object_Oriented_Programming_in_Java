@@ -12,8 +12,10 @@ import de.fhpotsdam.unfolding.geo.Location;
 import de.fhpotsdam.unfolding.marker.AbstractShapeMarker;
 import de.fhpotsdam.unfolding.marker.Marker;
 import de.fhpotsdam.unfolding.marker.MultiMarker;
+import de.fhpotsdam.unfolding.providers.AbstractMapProvider;
 import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.providers.MBTilesMapProvider;
+import de.fhpotsdam.unfolding.providers.OpenStreetMap;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import parsing.ParseFeed;
 import processing.core.PApplet;
@@ -44,7 +46,7 @@ public class EarthquakeCityMap extends PApplet {
 	
 
 	//feed with magnitude 2.5+ Earthquakes
-	private String earthquakesURL = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
+	private String earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
 	
 	// The files containing city names and info and country names and info
 	private String cityFile = "city-data.json";
@@ -73,9 +75,17 @@ public class EarthquakeCityMap extends PApplet {
 		    earthquakesURL = "2.5_week.atom";  // The same feed, but saved August 7, 2015
 		}
 		else {
-			map = new UnfoldingMap(this, 200, 50, 650, 600, new Google.GoogleMapProvider());
+			//AbstractMapProvider mapProvider = new Microsoft.HybridProvider();
+			AbstractMapProvider mapProvider = new OpenStreetMap.OpenStreetMapProvider();
+			//AbstractMapProvider mapProvider = new Google.GoogleMapProvider();
+			map = new UnfoldingMap(this, 200, 50, 650, 600, mapProvider);
+			// map = new UnfoldingMap(this, 50, 50, getSize().width-100,
+			// getSize().height-100, new Google.GoogleMapProvider());//
+			// OpenStreetMap.OpenStreetMapProvider());
 			// IF YOU WANT TO TEST WITH A LOCAL FILE, uncomment the next line
-		    //earthquakesURL = "2.5_week.atom";
+			// earthquakesURL = "2.5_week.atom";
+			// earthquakesURL =
+			// "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
 		}
 		MapUtils.createDefaultEventDispatcher(this, map);
 		
