@@ -178,6 +178,8 @@ public class ParseFeed {
 			
 			point.putProperty("altitude", columns[8 + i]);
 			
+			point.putProperty("id", columns[0]);
+			
 			features.add(point);
 		}
 
