@@ -24,7 +24,7 @@ public class DocumentBenchmarking {
 		
 	    // The amount of characters to increment each step
 	    // You can play around with this
-		int increment = 20000;
+		int increment = 50000;
 
 		// The number of steps to run.  
 		// You can play around with this.
@@ -58,6 +58,31 @@ public class DocumentBenchmarking {
 			 * 6. Print out the time it took to complete the loop in step 5 
 			 *      (on the same line as the first print statement) followed by a newline (\n) 
 			 */  
+			 System.out.print(numToCheck + "\t");
+			 
+			 String testText = getStringFromFile(textfile, numToCheck);
+			 BasicDocument bd = new BasicDocument(testText);
+			 
+			 long startTime = System.nanoTime();
+
+			 bd.getFleschScore();
+			 
+			 long estimatedTime = System.nanoTime() - startTime;
+			 double timeInSec = (double)estimatedTime/1000000000;
+			 System.out.print(estimatedTime + "\t");
+			 
+			 EfficientDocument ed = new EfficientDocument(testText);
+			 
+			 startTime = System.nanoTime();
+
+			 ed.getFleschScore();
+			 
+			 estimatedTime = System.nanoTime() - startTime;
+			 timeInSec = (double)estimatedTime/1000000000;
+			 System.out.print(estimatedTime + "\t");
+			 
+			 System.out.print("\n");
+			 
 			 
 		}
 	

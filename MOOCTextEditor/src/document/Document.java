@@ -71,17 +71,14 @@ public abstract class Document {
 		boolean newSyllable = true;
 		String vowels = "aeiouy";
 		char[] cArray = word.toCharArray();
-		for (int i = 0; i < cArray.length; i++)
-		{
-		    if (i == cArray.length-1 && Character.toLowerCase(cArray[i]) == 'e' 
-		    		&& newSyllable && numSyllables > 0) {
-                numSyllables--;
-            }
-		    if (newSyllable && vowels.indexOf(Character.toLowerCase(cArray[i])) >= 0) {
+		for (int i = 0; i < cArray.length; i++) {
+			if (i == cArray.length - 1 && Character.toLowerCase(cArray[i]) == 'e' && newSyllable && numSyllables > 0) {
+				numSyllables--;
+			}
+			if (newSyllable && vowels.indexOf(Character.toLowerCase(cArray[i])) >= 0) {
 				newSyllable = false;
 				numSyllables++;
-			}
-			else if (vowels.indexOf(Character.toLowerCase(cArray[i])) < 0) {
+			} else if (vowels.indexOf(Character.toLowerCase(cArray[i])) < 0) {
 				newSyllable = true;
 			}
 		}
