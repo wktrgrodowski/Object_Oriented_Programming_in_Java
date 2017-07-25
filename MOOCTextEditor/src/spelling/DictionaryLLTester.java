@@ -37,6 +37,7 @@ public class DictionaryLLTester {
 		smallDict.addWord("help");
 		smallDict.addWord("a");
 		smallDict.addWord("subsequent");
+		System.out.println("I'm " + smallDict.size());
 		
 		DictionaryLoader.loadDictionary(largeDict, dictFile);
 	}
