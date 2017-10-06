@@ -121,8 +121,15 @@ public abstract class Graph {
 	 * @return The degree sequence of this graph.
 	 */
 	public List<Integer> degreeSequence() {
-		// XXX: Implement in part 1 of week 2
-		return null;
+		List<Integer> degreeSequenceList = new ArrayList<Integer>();
+		
+		for (int i=0; i<numVertices; i++){
+			degreeSequenceList.add(getNeighbors(i).size()+getInNeighbors(i).size());
+		} 
+		
+		Collections.sort(degreeSequenceList, Collections.reverseOrder());
+		
+		return degreeSequenceList;
 	}
 	
 	/**
@@ -130,7 +137,6 @@ public abstract class Graph {
 	 * @param v The starting vertex
 	 * @return A list of the vertices that can be reached in exactly two hops (by 
 	 * following two edges) from vertex v.
-	 * XXX: Implement in part 2 of week 2 for each subclass of Graph
 	 */
 	public abstract List<Integer> getDistance2(int v); 
 
@@ -229,7 +235,7 @@ public abstract class Graph {
 	
 	/** Main method provided with some basic tests.  */
 	public static void main (String[] args) {
-		GraphLoader.createIntersectionsFile("data/maps/ucsd.map", "data/intersections/ucsd.intersections");
+		//GraphLoader.createIntersectionsFile("data/maps/podgorze.map", "data/intersections/podgorze.intersections");
 		
 
 		// For testing of Part 1 functionality
@@ -263,7 +269,12 @@ public abstract class Graph {
 		System.out.println("Testing distance-two methods on sample graphs...");
 		System.out.println("Goal: implement method using two approaches.");
 
-
+		System.out.println("getNeighbors result: " + graphFromFile.getNeighbors(5));
+		System.out.println("getDistance2 result: " + graphFromFile.getDistance2(5));
 		
+		GraphAdjMatrix matrixGraphFromFile = new GraphAdjMatrix();
+		GraphLoader.loadRoadMap("data/testdata/simpletest.map", matrixGraphFromFile);
+		System.out.println("getNeighbors Matrix result: " + matrixGraphFromFile.getNeighbors(1));
+		System.out.println("getDistance2 Matrix result: " + matrixGraphFromFile.getDistance2(1));
 	}
 }

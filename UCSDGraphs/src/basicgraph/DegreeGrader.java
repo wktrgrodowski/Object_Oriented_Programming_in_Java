@@ -80,6 +80,8 @@ public class DegreeGrader {
         String file = "data/graders/mod1/graph" + i + ".txt";
         List<Integer> corr = readCorrect(file + ".degrees");
         
+        feedback += ("\n\nTesting file: " + file);
+        
         feedback += "\n\nGRAPH: " + desc;
         feedback += appendFeedback(i * 2 - 1, "Testing adjacency list"); 
 
